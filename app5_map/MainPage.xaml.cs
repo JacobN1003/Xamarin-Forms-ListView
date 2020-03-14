@@ -8,18 +8,40 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 namespace app5_map
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
-
-            //var map = new Map(MapSpan.FromCenterAndRadius(new Position(36.8961, 10.1865),
-            //    Distance.FromMiles(0.5)));
-            
+            JakesPicker.Items.Add("Pizza Port Bressi Ranch");
+            JakesPicker.Items.Add("Black Plague Brewing");
+            JakesPicker.Items.Add("Beach Grease Beer Company");
+            JakesPicker.Items.Add("Belching Beaver");
         }
+
+        void JakesPicker_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            var name = JakesPicker.Items[JakesPicker.SelectedIndex];
+            if (name == "Pizza Port Bressi Ranch")
+                JakesMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(33.128860, -117.250210), Distance.FromMiles(1)));
+            if (name == "Black Plague Brewing")
+                JakesMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(33.215850, -117.266512), Distance.FromMiles(1)));
+            if (name == "Beach Grease Beer Company")
+                JakesMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(33.142206, -117.219472), Distance.FromMiles(1)));
+            if (name == "Belching Beaver")
+                JakesMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(33.202373, -117.240985), Distance.FromMiles(1)));
+        }
+
+        void MapTypes(object sender, EventArgs e)
+        {
+            if ((sender as Button).Text == "Satellite") JakesMap.MapType = MapType.Satellite;
+            if ((sender as Button).Text == "Street") JakesMap.MapType = MapType.Street;
+        }
+
+        
     }
 }

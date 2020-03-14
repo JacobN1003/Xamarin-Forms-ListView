@@ -6,9 +6,116 @@
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="app5_map.MainPage">
-    <StackLayout Padding="20" VerticalOptions="StartAndExpand">
+    <StackLayout Padding="20" BackgroundColor="DimGray">
+        <StackLayout Padding="10" BackgroundColor="CadetBlue">
         <map:Map
-            HeightRequest="500"
-            />
+            x:Name="JakesMap"
+            HeightRequest="450"
+            MapType="Street"
+            ItemsSource="{Binding .}"
+            >
+            <x:Arguments>
+                <map:MapSpan>
+                    <x:Arguments>
+                        <map:Position>
+                            <x:Arguments>
+                                <x:Double>33.115205</x:Double>
+                                <x:Double>-117.316322</x:Double>
+                            </x:Arguments>
+                        </map:Position>
+                        <x:Double>0.04</x:Double>
+                        <x:Double>0.04</x:Double>
+                    </x:Arguments>
+                </map:MapSpan>
+            </x:Arguments>
+            <map:Map.Pins>
+             <map:Pin Label="Pizza Port - Bressi Ranch"
+                       Address="2730 Gateway Rd Carlsbad, CA 92009"
+                       Type="Place"> 
+                 <map:Pin.Position>
+                     <map:Position>
+                         <x:Arguments>
+                             <x:Double>33.128860</x:Double>
+                             <x:Double>-117.250210</x:Double>
+                         </x:Arguments>
+                     </map:Position>
+                 </map:Pin.Position>
+             </map:Pin>
+                <map:Pin Label="Black Plague Brewing"
+                       Address="2530 Jason Ct Oceanside, CA 9205"
+                       Type="Place"> 
+                 <map:Pin.Position>
+                     <map:Position>
+                         <x:Arguments>
+                             <x:Double>33.215850</x:Double>
+                             <x:Double>-117.266512</x:Double>
+                         </x:Arguments>
+                     </map:Position>
+                 </map:Pin.Position>
+             </map:Pin>
+                <map:Pin Label="Beach Grease Beer Company"
+                       Address="1280 Activity Dr Vista, CA 92081"
+                       Type="Place"> 
+                 <map:Pin.Position>
+                     <map:Position>
+                         <x:Arguments>
+                             <x:Double>33.142206</x:Double>
+                             <x:Double>-117.219472</x:Double>
+                         </x:Arguments>
+                     </map:Position>
+                 </map:Pin.Position>
+             </map:Pin>
+                <map:Pin Label="Belching Beaver"
+                       Address="302 E Broadway Vista, CA 92084"
+                       Type="Place"> 
+                 <map:Pin.Position>
+                     <map:Position>
+                         <x:Arguments>
+                             <x:Double>33.202373</x:Double>
+                             <x:Double>-117.240985</x:Double>
+                         </x:Arguments>
+                     </map:Position>
+                 </map:Pin.Position>
+             </map:Pin>
+         </map:Map.Pins>
+           </map:Map>
+
+            </StackLayout>
+        <StackLayout Padding="20">
+            <Picker
+                x:Name="JakesPicker"
+                TitleColor="White"
+                Title="My Favorite Breweries"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                SelectedIndexChanged="JakesPicker_SelectedIndexChanged" />
+                
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button
+                    CornerRadius="50"
+                    BackgroundColor="CadetBlue"
+                    WidthRequest="150"
+                    x:Name="Satellite"
+                    Clicked="MapTypes"
+                    Text="Satellite"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    TextColor="White"
+                    />
+                <Button
+                    CornerRadius="50"
+                    BackgroundColor="CadetBlue"
+                    WidthRequest="150"
+                    x:Name="Street"
+                    Clicked="MapTypes"
+                    Text="Street"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    TextColor="White"
+                    />
+            </StackLayout>
+            
+        </StackLayout>
     </StackLayout>
 </ContentPage>
